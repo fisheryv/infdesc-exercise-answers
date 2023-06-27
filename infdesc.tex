@@ -45,6 +45,7 @@
 \restoregeometry
 
 \clearpage
+\input{book/front-matter/copyright.tex}
 
 % Table of contents
 \bookmark[page=3,level=0]{Contents}
@@ -81,6 +82,25 @@
 % https://tex.stackexchange.com/a/6494 (Stefan Kottwitz)
 % https://tex.stackexchange.com/a/6494#comment971771_6494 (egreg)
 \addtocontents{toc}{\protect\pagebreak}
+
+\appendix
+
+\begin{appendices}
+
+\renewcommand{\sectionmark}[1]{\markboth{\leftmark}{Section \thesection.\ #1}}
+\renewcommand{\chaptermark}[1]{\markboth{Appendix \thechapter.\ #1}{\rightmark}}
+
+\part*{Appendices}
+\addcontentsline{toc}{part}{Appendices}
+
+\input{book/proof-writing/_proof-writing.tex}
+\input{book/miscellany/_miscellany.tex}
+
+\end{appendices}
+
+\backmatter
+
+\input{book/licence/_licence.tex}
 
 \cleardoublepage
 

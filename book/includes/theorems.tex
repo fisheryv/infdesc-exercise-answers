@@ -61,6 +61,17 @@
 
 \declaretheoremstyle[
     spaceabove=6pt,
+    spacebelow=16pt,
+    headfont={\color{excol}\fontfamily{bch}\bfseries\hspace{-\exsymbolwidth}\exintrosymbol},
+    headpunct={{\par\nobreak}\\},
+    notefont={\mdseries},
+    notebraces={(}{)},
+    bodyfont=\normalfont,
+    qed={\color{pfcol}$\Box$}
+]{infdescso}
+
+\declaretheoremstyle[
+    spaceabove=6pt,
     spacebelow=6pt,
     headfont={\color{excol}\fontfamily{bch}\bfseries\hspace{-\exsymbolwidth}\exintrosymbol},
     headpunct={{\par\nobreak}\\},
@@ -245,6 +256,8 @@
 
 
 % Exercises and examples
+
+\declaretheorem[style=infdescso, sibling=theorem, numbered=no, refname={solution,solutions}, Refname={Solution,Solutions}, name=Solution]{solution}
 
 \declaretheorem[style=infdescex, sibling=theorem, refname={example,examples}, Refname={Example,Examples}, name=Example]{example}
 \declaretheorem[style=infdescex, sibling=theorem, refname={example,examples}, Refname={Example,Examples}, name={Example\assumesAC{excolac}}]{exampleac}
