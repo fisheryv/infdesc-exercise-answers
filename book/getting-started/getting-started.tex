@@ -70,6 +70,27 @@ so that $d$ divides $au+bv$.
 Prove that if an integer $a$ leaves a remainder of $r$ when divided by an integer $b$, then $a$ leaves a remainder of $r$ when divided by $-b$.
 \end{exercise}
 
+\begin{solution}
+According to the division theorem, an integer $a$ divided by an integer $b$ leaves a remainder of $r$，so there is some $q \in \mathbb{Z}$ such that \\
+\[a = qb+r \quad 0 \le r < b \tag{1}.\] 
+
+Suppose $a$ divided by $-b$ leaves $m$, so there is some $p \in \mathbb{Z}$ such that \\
+\[a=p(-b)+m \quad 0 \le m < b \tag{2}.\]
+
+$(1)-(2)=qb+r+pb-m=0$, rearranged formula is
+\[(p+q)b=m-r\]
+\begin{align*}
+&\because 0 \le m < b \text{ and } 0 \le r < b \\
+&\therefore -b < (p+q)b=m-r < b \\
+&\therefore -1 < p+q < 1 \\
+&\because (p+q) \in \mathbb{Z} \\
+&\therefore p+q=0 \\
+&\therefore (p+q)b=m-r=0 \\
+&\therefore m=r \\
+\end{align*}
+so $a$ leaves a remainder of $r$ when divided by $-b$.
+\end{solution}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}
@@ -77,17 +98,66 @@ Find the base-$17$ expansion of $408\,735\,787$ and the base-$36$ expansion of $
 \end{exercise}
 
 \begin{solution}
-
 \[408\,735\,787 = GFEDCBA_{(17)}\]
-
 \[1\,442\,151\,747 = 2DV152_{(36)}\]
 \end{solution}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}
 Interpret the operations of subtraction and division as geometric transformations of the real number line.
 \end{exercise}
 
+\begin{solution}
+Interpret \textbf{subtraction} as geometric transformations of the real number line.
+
+If we consider addition as moving to right, subtraction can be considered as moving to left. Concretely, take two copies of the number line, one above the other, with the same choice of unit length; move the $b$ of the lower number line beneath the point $a$ of the upper number line. Then $a-b$ is the point on the upper number line lying above the point $0$ of the lower number line. For example, $5-3=2$, here is an illustration of the fact that $5-3=2$:
+\begin{center}
+\fitwidthc{0.9}{\begin{tikzpicture}
+\draw[latex-latex] (-0.5,0) -- (10.5,0) ; 
+\foreach \x in  {0,1,2,3,4,5,6,7,8,9,10}
+\draw[shift={(\x,0)}] (0pt,3pt) -- (0pt,-3pt);
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10}
+\draw[shift={(\x,0)}] (0pt,0pt) -- (0pt,3pt) node[above] {$\x$};
+\draw[*-*] (1.92,0) -- (5.08,0);
+\draw[very thick] (2,0) -- (5,0);
+
+\draw[latex-latex] (-0.5,-1) -- (10.5,-1) ; 
+\foreach \x in  {-2,-1,0,1,2,3,4,5,6,7,8}
+\draw[shift={(\x+2,-1)},color=black] (0pt,3pt) -- (0pt,-3pt);
+\foreach \x in {-2,-1,0,1,2,3,4,5,6,7,8}
+\draw[shift={(\x+2,-1)},color=black] (0pt,0pt) -- (0pt,-3pt) node[below] {$\x$};
+\draw[->] (2,-0.8) -- (2,-0.2) ;
+\draw[dashed] (5,-1) -- (5,0) ;
+\end{tikzpicture}}
+\end{center}
+
+Interpret \textbf{division} as geometric transformations of the real number line.
+
+If we consider multiplication as zoom in, division can be considered as zoom out. Concretely, take two copies of the number line, one above the other; align the $0$ points on both number lines, and compress the lower number line evenly until the point $b$ on the lower number line is below the point $1$ on the upper number line, Then $a/b$ is the point on the upper number line lying above $a$ on the lower number line. For example, $20/5=4$, here is an illustration of the fact that $20/5=4$:
+\begin{center}
+\fitwidthc{0.9}{\begin{tikzpicture}
+\draw[latex-latex] (-5.5,0) -- (8.5,0) ; 
+\foreach \x in  {0,1,2,3,4}
+\draw[shift={(2.5*\x-4,0)},color=black] (0pt,3pt) -- (0pt,-3pt);
+\foreach \x in {0,1,2,3,4}
+\draw[shift={(2.5*\x-4,0.2)},color=black] node[above] {$\x$};
+\draw[*-*] (-1.58,0) -- (6.08,0);
+\draw[very thick] (-1.5,0) -- (6,0);
+
+\draw[latex-latex] (-5.5,-1) -- (8.5,-1) ; 
+\foreach \x in  {-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24}
+\draw[shift={(0.5*\x-4,-1)}] (0pt,3pt) -- (0pt,-3pt);
+\foreach \x in {-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24}
+\draw[shift={(0.5*\x-4,-1.2)}] node[below] {$\text{\footnotesize\x}$};
+\draw[dashed] (-4,-1) -- (-4,0) ;
+\draw[dashed] (-1.5,-1) -- (-1.5,0) ;
+\draw[->] (6,-0.8) -- (6,-0.2) ;
+\end{tikzpicture}}
+\end{center}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}
 Let $r$ be a rational number and let $a$ be an irrational number. Prove that it is possible that $ra$ be rational, and it is possible that $ra$ be irrational.
@@ -101,20 +171,51 @@ $r$ is a rational number and $a$ is an irrational number, let $r = 0$, so that $
 Again let $r = 1$, so that $ra=a$ is an irrational number.
 \end{solution}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}
 Write down a polynomial of degree $4$ over $\mathbb{R}$ which is not a polynomial over $\mathbb{Q}$.
 \end{exercise}
 
+\begin{solution}
+\[p(x) = ax^4+bx^3+cx^2+dx+e \quad x \in \mathbb{R} \setminus \mathbb{Q}\]
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}
 \label{exComplexNumberAsRootOfQuadraticOverR}
 Let $\alpha = a+bi$ be a complex number, where $a,b \in \mathbb{R}$. Prove that $\alpha$ is the root of a quadratic polynomial over $\mathbb{R}$, and find the other root of this polynomial.
 \end{exercise}
 
+\begin{solution}
+According to the quadratic formula, a quadratic polynomial $p(x) = x^2+mx+n$ has 2 roots over $\mathbb{C}$, which are
+\[ \frac{-m+\sqrt{m^2-4n}}{2} \quad \text{and} \quad \frac{-m-\sqrt{m^2-4n}}{2} \]
+rearrange the root formula, that
+\[ \frac{-m}{2}+\frac{\sqrt{4n-m^2}}{2}i \quad \text{and} \quad \frac{-m}{2}-\frac{\sqrt{4n-m^2}}{2}i \]
+Because $m,n$ are coefficients, let $\frac{-m}{2} = a$ and $\frac{\sqrt{4n-m^2}}{2} = b$, then we have $a+bi$ and $a-bi$ as two roots of a quadratic polynomial.
+
+Now, let’s construct a polynomial $p(x)$ such that $P(\alpha) = 0$. We can multiply the factors $(x - (a+bi))$ and $(x - (a-bi))$ to obtain:
+\[p(x) = (x - (a + bi))(x - (a - bi)).\]
+Expanding the product, we get:
+\[p(x) = (x - a - bi)(x - a + bi) = ((x - a) - bi)((x - a) + bi) = (x - a)^2 - (bi)^2=(x-a)^2+b^2.\]
+Since $a,b \in \mathbb{R}$, $(x - a)^2$ and $b^2$ are also real numbers. Thus, the coefficients of $p(x)$ are real numbers, which means $p(x)$ is a quadratic polynomial over $\mathbb{R}$. The other root is $a-bi$.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}
 \label{exDiscriminantRealRoots}
 \index{discriminant}
 Let $a,b \in \mathbb{C}$ and let $p(x)=x^2+ax+b$. The value $\Delta=a^2-4b$ is called the \textbf{discriminant} of $p$. Prove that $p$ has two roots if $\Delta \ne 0$ and one root if $\Delta = 0$. Moreover, if $a,b \in \mathbb{R}$, prove that $p$ has no real roots if $\Delta < 0$, one real root if $\Delta = 0$, and two real roots if $\Delta > 0$.
 \end{exercise}
+
+\begin{solution}
+According to the quadratic formula, a quadratic polynomial $p(x) = x^2+ax+b$ has 2 roots over $\mathbb{C}$, which are
+\[ \frac{-a+\sqrt{a^2-4b}}{2} \quad \text{and} \quad \frac{-a-\sqrt{a^2-4b}}{2} \]
+\begin{itemize}
+\item if $\Delta=a^2-4b=0$, then $ \frac{-a+\sqrt{a^2-4b}}{2} = \frac{-a-\sqrt{a^2-4b}}{2}$, so that there is one root.
+\item if $\Delta=a^2-4b \ne 0$, then $ \frac{-a+\sqrt{a^2-4b}}{2} \ne \frac{-a-\sqrt{a^2-4b}}{2}$, so that there are two roots.
+\end{itemize}
+if $a,b \in \mathbb{R}$ and $\Delta < 0$, $\sqrt{a^2-4b}$ does not be defined in $\mathbb{R}$, so that there is no real root.
+\end{solution}
